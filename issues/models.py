@@ -23,7 +23,7 @@ class Issue(models.Model):
     status = models.IntegerField(
         default=StatusChoice.OPEN, choices=StatusChoice.choices
     )
-    linked_issues = models.ManyToManyField(to="Issue")
+    linked_issues = models.ManyToManyField(to="Issue", blank=True)
     project = models.ForeignKey(to="project.Project", on_delete=models.PROTECT)
     reported_by = models.ForeignKey(
         to=settings.AUTH_USER_MODEL,
